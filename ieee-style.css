@@ -1,0 +1,256 @@
+/* IEEE Style - Dark Academic Repository Theme */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --ieee-bg: #030712; /* Dark slate */
+    --ieee-surface: #111827; /* Dark surface */
+    --ieee-elevated: rgba(17, 24, 39, 0.8);
+    --ieee-text-primary: #f9fafb;
+    --ieee-text-secondary: #9ca3af;
+    --ieee-accent: #4f46e5; /* Indigo */
+    --ieee-accent-glow: rgba(79, 70, 229, 0.3);
+    --ieee-border: rgba(255, 255, 255, 0.1);
+    --ieee-serif: 'Libre Baskerville', 'Times New Roman', serif;
+    --ieee-sans: 'Inter', -apple-system, sans-serif;
+}
+
+/* Professional Paper Container for Dark Theme */
+.ieee-paper-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: var(--ieee-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 60px 80px;
+    border: 1px solid var(--ieee-border);
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.ieee-header {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--ieee-border);
+    padding-bottom: 30px;
+}
+
+.ieee-header h1 {
+    font-family: var(--ieee-serif);
+    font-size: 2.2rem;
+    color: var(--ieee-text-primary);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.ieee-header p {
+    font-family: var(--ieee-sans);
+    font-size: 0.9rem;
+    color: var(--ieee-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Publication List Entry */
+.ieee-publication-entry {
+    border-bottom: 1px solid var(--ieee-border);
+    padding: 30px 0;
+    transition: background 0.2s ease;
+}
+
+.ieee-publication-entry:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.ieee-publication-entry h2 {
+    font-family: var(--ieee-serif);
+    font-size: 1.6rem;
+    color: var(--ieee-accent);
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.ieee-publication-entry h2:hover {
+    filter: brightness(1.2);
+    text-decoration: underline;
+}
+
+.ieee-authors {
+    font-family: var(--ieee-sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ieee-text-primary);
+    margin-bottom: 12px;
+}
+
+.ieee-abstract {
+    font-family: var(--ieee-serif);
+    font-size: 1rem;
+    color: var(--ieee-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.ieee-abstract-label {
+    font-weight: 700;
+    font-style: italic;
+    margin-right: 8px;
+    color: var(--ieee-text-primary);
+}
+
+.ieee-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--ieee-sans);
+    font-size: 0.85rem;
+    color: var(--ieee-text-secondary);
+}
+
+.ieee-tag {
+    background: var(--ieee-accent);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Submission Elements */
+.ieee-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--ieee-border);
+    color: var(--ieee-text-primary);
+    padding: 12px;
+    border-radius: 4px;
+    font-family: var(--ieee-serif);
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.ieee-input:focus {
+    outline: none;
+    border-color: var(--ieee-accent);
+    box-shadow: 0 0 0 2px var(--ieee-accent-glow);
+}
+
+.ieee-button {
+    background: var(--ieee-accent);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--ieee-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ieee-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--ieee-accent-glow);
+}
+
+
+/* Manuscript Viewer Layout */
+.ieee-viewer-main {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 100px auto 40px;
+    padding: 0 40px;
+}
+
+.ieee-sidebar {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.ieee-sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.ieee-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ieee-sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.ieee-sidebar ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    display: block;
+    line-height: 1.4;
+}
+
+.ieee-sidebar ul li a:hover {
+    color: var(--ieee-accent);
+}
+
+.ieee-paper-container.viewer-mode {
+    margin: 0;
+    width: 100%;
+    padding: 60px;
+}
+
+/* Long Form Content Styling */
+.ieee-full-text {
+    font-family: var(--ieee-sans);
+    color: #e2e8f0;
+    line-height: 1.9;
+    font-size: 1.15rem;
+}
+
+.ieee-full-text h2 {
+    font-family: var(--ieee-serif);
+    color: var(--ieee-accent);
+    font-size: 1.6rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.ieee-full-text p {
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.ieee-viewer-footer {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* Mobile Responsiveness for Viewer */
+@media (max-width: 1024px) {
+    .ieee-viewer-main {
+        grid-template-columns: 1fr;
+    }
+    .ieee-sidebar {
+        display: none;
+    }
+}

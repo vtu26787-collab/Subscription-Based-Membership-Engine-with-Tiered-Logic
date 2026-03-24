@@ -1,0 +1,377 @@
+:root {
+    /* Base Color Tokens (Dark Theme Default - Deep Navy) */
+    --saas-bg: #050b18;
+    --saas-sidebar: rgba(10, 11, 28, 0.95);
+    --saas-surface: rgba(18, 22, 45, 0.6);
+    --saas-border: rgba(255, 255, 255, 0.08);
+    --saas-accent: #10b981; /* Neon Emerald */
+    --saas-accent-glow: rgba(16, 185, 129, 0.3);
+    --saas-text-main: #f8fafc;
+    --saas-text-dim: #94a3b8;
+    --saas-glass-blur: 16px;
+    --saas-radius: 12px;
+    --saas-font-main: 'Inter', system-ui, sans-serif;
+    --saas-font-heading: 'Outfit', sans-serif;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--saas-bg);
+    color: var(--saas-text-main);
+    font-family: var(--saas-font-main);
+    overflow-x: hidden;
+}
+
+/* Sidebar Layout Logic */
+.saas-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.saas-sidebar {
+    width: 260px;
+    background: var(--saas-sidebar);
+    backdrop-filter: blur(var(--saas-glass-blur));
+    -webkit-backdrop-filter: blur(var(--saas-glass-blur));
+    border-right: 1px solid var(--saas-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.saas-sidebar-header h2 {
+    color: var(--saas-text-main);
+}
+
+.saas-logo-icon svg {
+    stroke: var(--saas-accent);
+}
+
+.saas-sidebar-header {
+    padding: 30px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.saas-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--saas-accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px var(--saas-accent-glow);
+}
+
+.saas-sidebar-nav {
+    flex: 1;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    gap: 2px;
+}
+
+.saas-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: var(--saas-text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.saas-nav-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.saas-nav-item:hover, .saas-nav-item.active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--saas-text-main);
+}
+
+.saas-nav-item.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--saas-accent);
+    font-weight: 600;
+}
+
+.saas-nav-item.active svg {
+    stroke: var(--saas-accent);
+    opacity: 1;
+}
+
+.saas-sidebar-footer {
+    padding: 20px 16px;
+    border-top: 1px solid var(--saas-border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--saas-border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.theme-toggle svg {
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.theme-toggle[data-current='light'] .sun-icon {
+    background: var(--saas-accent);
+    color: #000;
+}
+
+.theme-toggle[data-current='dark'] .moon-icon {
+    background: var(--saas-accent);
+    color: #000;
+}
+
+/* Main Content Area */
+.saas-main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 60px 40px 40px 40px;
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+}
+
+.saas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--saas-border);
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    z-index: 20 !important;
+    background: transparent !important;
+}
+
+/* Page Animations */
+.fade-in {
+    animation: saasFadeIn 0.5s ease forwards;
+}
+
+@keyframes saasFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.saas-header h1 {
+    font-family: var(--saas-font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* SaaS Cards and Bento Grids */
+.saas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.saas-card {
+    background: var(--saas-surface);
+    backdrop-filter: blur(var(--saas-glass-blur));
+    -webkit-backdrop-filter: blur(var(--saas-glass-blur));
+    border: 1px solid var(--saas-border);
+    border-radius: var(--saas-radius);
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.saas-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, var(--saas-accent-glow), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.saas-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.saas-card:hover::after {
+    opacity: 0.4;
+}
+
+.saas-card-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--saas-accent);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.saas-card h3 {
+    font-family: var(--saas-font-heading);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.saas-card p {
+    color: var(--saas-text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* SaaS Buttons */
+.saas-btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: 1px solid var(--saas-border);
+    font-family: var(--saas-font-main);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--saas-text-main);
+}
+
+.saas-btn-primary {
+    background: var(--saas-accent);
+    color: #000;
+    border-color: var(--saas-accent);
+    box-shadow: 0 4px 15px var(--saas-accent-glow);
+}
+
+.saas-btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--saas-accent-glow);
+}
+
+/* Auth Pages Overhaul */
+.saas-auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                var(--saas-bg);
+}
+
+.saas-auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 48px;
+    background: var(--saas-surface);
+    backdrop-filter: blur(var(--saas-glass-blur));
+    border: 1px solid var(--saas-border);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.saas-input-group {
+    margin-bottom: 24px;
+}
+
+.saas-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--saas-border);
+    border-radius: 12px;
+    color: var(--saas-text-main);
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.saas-input:focus {
+    outline: none;
+    border-color: var(--saas-accent);
+    background: rgba(16, 185, 129, 0.05);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+/* Floating Chat Widget */
+.saas-chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--saas-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px var(--saas-accent-glow);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.saas-chat-widget:hover {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .saas-sidebar {
+        width: 0;
+        transform: translateX(-100%);
+    }
+    .saas-main {
+        margin-left: 0;
+        padding: 24px;
+    }
+}
