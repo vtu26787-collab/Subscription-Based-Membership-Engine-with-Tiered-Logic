@@ -1,0 +1,15 @@
+{
+  "name": "subscription-engine",
+  "version": "1.0.0",
+  "description": "Subscription-Based Membership Engine",
+  "scripts": {
+    "prestart": "cd backend && npm install",
+    "install-backend": "cd backend && npm install",
+    "setup-db": "cd database && type schema.sql | mysql -u root -pkishor15",
+    "start": "node backend/server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
